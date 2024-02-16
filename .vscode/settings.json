@@ -4,6 +4,10 @@
         "sstream": "c",
         "regex": "c",
         "log.h": "c",
-        "gtest.h": "c"
+        "gtest.h": "c",
+        "cstring": "c",
+        "base.h": "c",
+        "error.h": "c",
+        "radixtree.h": "c"
     }
 }

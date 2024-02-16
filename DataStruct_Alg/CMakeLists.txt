@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.5.0)
 project(DataStruct VERSION 0.1.0)
 
-set(CMAKE_C_FLAGS "-g -std=c99 -pthread ${CMAKE_C_FLAGS}")
+set(CMAKE_C_FLAGS "-g -std=c99 -Wunused-variable -pthread ${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -pthread")
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
@@ -24,8 +24,17 @@ link_directories(
 
 enable_testing()
 
+#ringbuffer
 add_executable(ringbuffer_test test/DataStruct/ringbuffer_test.cc)
 target_link_libraries(ringbuffer_test rb_static util_static gtest_main gtest)
 add_custom_command(TARGET ringbuffer_test
-    COMMAND echo "target ringbuffer"
+    COMMAND echo "compile ring buffer test..."
+)
+
+#radixtree
+add_executable(radixtree test/DataStruct/radixtree_test.cc)
+target_link_libraries(radixtree rt_static util_static gtest_main gtest)
+add_custom_command(TARGET radixtree
+    PRE_BUILD
+    COMMAND echo "compile radix tree test..."
 )
